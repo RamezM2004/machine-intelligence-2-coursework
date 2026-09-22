@@ -75,3 +75,20 @@ This repository archives the laboratory assignments, algorithms, and computation
 │   └── hand_landmarker.task               # MediaPipe neural asset
 └── README.md
 ```
+---
+
+## Quickstart & Running the Labs
+
+All lab input images and datasets (`machine_failure_cleaned.csv`, `03-Panorama-Image-Stitching/inputs/`, `hand_landmarker.task`) are stored directly in this repository.
+
+### Installation
+```bash
+git clone https://github.com/RamezM2004/machine-intelligence-2-coursework.git
+cd machine-intelligence-2-coursework
+pip install -r requirements.txt
+```
+
+### Running Jupyter Notebooks
+```bash
+jupyter notebook 01-Image-Filtering/Image_filtering.ipynb
+```
