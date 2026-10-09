@@ -75,6 +75,21 @@ This repository archives the laboratory assignments, algorithms, and computation
 - **Performance:** Evaluated via ROC-AUC curves, confusion matrices, and precision-recall trade-offs to minimize false-negative unplanned factory downtime.
 - **Artifacts:** Technical results deck ([`ANN_Machine_Failure_Results.pdf`](04-ANN-Predictive-Maintenance/ANN_Machine_Failure_Results.pdf)) and cleaned dataset ([`machine_failure_cleaned.csv`](04-ANN-Predictive-Maintenance/machine_failure_cleaned.csv)).
 
+### 5. Pedestrian Detection, Optical Flow Tracking, & Lane Detection (`05-Pedestrian-Detection-and-Tracking/`)
+- **Pedestrian Localization (HOG + Linear SVM):**
+  - Extracts 9-bin Histogram of Oriented Gradients (HOG) over $8 \times 8\text{ px}$ cells and $2 \times 2$ block normalization.
+  - Multi-scale sliding window detector evaluated with a trained `LinearSVC`.
+  - Non-Maximum Suppression (NMS) to isolate genuine pedestrian detections.
+- **Sparse Optical Flow Tracking (Lucas-Kanade):**
+  - Tracks salient Shi-Tomasi corner features across video frames using multi-level pyramidal Lucas-Kanade optical flow (`cv2.calcOpticalFlowPyrLK`).
+- **Ego-Lane Boundary Detection (Hough Transform):**
+  - Isolates highway driving lanes using Canny edge detection, trapezoidal ROI masking, and Probabilistic Hough Line Transform (`cv2.HoughLinesP`).
+- **Artifacts:** Automated assignment notebook ([`Pedestrian_Detection_and_Tracking.ipynb`](05-Pedestrian-Detection-and-Tracking/Pedestrian_Detection_and_Tracking.ipynb)), custom HOG/SVM trainer notebook ([`HOG_SVM_Custom_Implementation.ipynb`](05-Pedestrian-Detection-and-Tracking/HOG_SVM_Custom_Implementation.ipynb)), detection outputs, and tracking videos.
+
+<p align="center">
+  <img src="05-Pedestrian-Detection-and-Tracking/pedestrian_detected.png" width="600" alt="Pedestrian Detection Output"/>
+</p>
+
 ---
 
 ## Repository Structure
@@ -109,6 +124,15 @@ This repository archives the laboratory assignments, algorithms, and computation
 ├── 04-ANN-Predictive-Maintenance/
 │   ├── ANN_Machine_Failure_Results.pdf    # ROC curves & confusion matrices
 │   └── machine_failure_cleaned.csv        # Preprocessed sensor telemetry dataset
+├── 05-Pedestrian-Detection-and-Tracking/
+│   ├── Pedestrian_Detection_and_Tracking.ipynb   # Full perception pipeline notebook
+│   ├── HOG_SVM_Custom_Implementation.ipynb      # Custom sliding window & LinearSVC trainer
+│   ├── pedestrian_detected.png                  # Visual detection output
+│   ├── input_street_scene.jpg                   # Input street test image
+│   ├── lk_optical_flow_tracking.mp4             # Lucas-Kanade optical flow tracking demo
+│   ├── lane_detection_hough.mp4                 # Autonomous driving lane detection demo
+│   ├── pedestrian_output.mp4                    # Pedestrian detection demo video
+│   └── README.md                                # Perception module documentation
 ├── requirements.txt
 └── README.md
 ```
@@ -117,7 +141,7 @@ This repository archives the laboratory assignments, algorithms, and computation
 
 ## Quickstart & Running the Labs
 
-All lab input images and datasets (`machine_failure_cleaned.csv`, `03-Panorama-Image-Stitching/inputs/`) are stored directly in this repository.
+All lab input images and datasets (`machine_failure_cleaned.csv`, `03-Panorama-Image-Stitching/inputs/`, `05-Pedestrian-Detection-and-Tracking/`) are stored directly in this repository.
 
 ### Installation
 ```bash
@@ -136,4 +160,7 @@ jupyter notebook 02-Corner-and-Blob-Detection/HW2.ipynb
 
 # Lab 3: Panorama Image Stitching
 jupyter notebook 03-Panorama-Image-Stitching/Stitching.ipynb
+
+# Lab 5: Pedestrian Detection & Tracking
+jupyter notebook 05-Pedestrian-Detection-and-Tracking/Pedestrian_Detection_and_Tracking.ipynb
 ```
