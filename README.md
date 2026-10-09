@@ -1,5 +1,5 @@
-# Machine Intelligence II: Computer Vision & Deep Learning Coursework
-### Spatial Filtering, Harris/Blob Detection, RANSAC Panorama Stitching & Predictive Maintenance ANNs
+# Machine Intelligence II: Computer Vision, Deep Learning, and Accepted PCB Defect Detection Paper
+### ICFT-Accepted YOLOv11 PCB Inspection Study plus Computer Vision Coursework
 
 **Course:** ME0572 - Machine Intelligence II  
 **Instructor:** Dr. Ghaith Al-refai  
@@ -10,11 +10,18 @@
 
 ## Overview
 
-This repository archives the laboratory assignments, algorithms, and computational implementations developed for **ME0572: Machine Intelligence II**. The coursework spans classical computer vision (spatial convolution, feature matching, homography estimation) through modern deep learning for industrial diagnostics.
+This repository archives the laboratory assignments, algorithms, and computational implementations developed for **ME0572: Machine Intelligence II**. It also links the course project that was developed into an accepted ICFT conference paper on YOLOv11-based PCB surface defect detection.
 
 ---
 
 ## Modules & Technical Implementations
+
+### 0. Accepted ICFT Conference Paper: YOLOv11 PCB Defect Detection
+- **Project:** Stage-wise evaluation of YOLOv11s for PCB surface defect detection.
+- **Status:** Accepted at the ICFT conference.
+- **Scope:** Evaluated baseline YOLOv11s against input-level, backbone-level, head-level, and inference-level modifications on the DsPCBSD+ PCB defect dataset.
+- **Techniques:** YOLOv11, SAHI sliced inference, Coordinate Attention, CBAM, P2 small-object head experiments, rare-class oversampling, and high-resolution training.
+- **Related repository:** `yolov11-pcb-defect-detection`.
 
 ### 1. Spatial Domain Image Filtering (`01-Image-Filtering/`)
 - **Implementations:** Implements 2D spatial convolution from scratch and compares against OpenCV optimized filters.
@@ -48,10 +55,6 @@ This repository archives the laboratory assignments, algorithms, and computation
 - **Performance:** Evaluated via ROC-AUC curves, confusion matrices, and precision-recall trade-offs to minimize false-negative unplanned factory downtime.
 - **Artifacts:** Technical results deck (`ANN_Machine_Failure_Results.pdf`) and cleaned dataset.
 
-### 5. MediaPipe Vision Trigger & UART Telemetry (`05-MediaPipe-Vision-Trigger/`)
-- Real-time gesture and hand landmark tracking pipeline utilizing Google MediaPipe (`hand_landmarker.task`).
-- Triggers deterministic microcontroller state changes over serial UART (`uart_wait_trigger.py`).
-
 ---
 
 ## Repository Structure
@@ -70,16 +73,13 @@ This repository archives the laboratory assignments, algorithms, and computation
 ├── 04-ANN-Predictive-Maintenance/
 │   ├── ANN_Machine_Failure_Results.pdf    # ROC curves & confusion matrices
 │   └── machine_failure_cleaned.csv        # Preprocessed sensor telemetry dataset
-├── 05-MediaPipe-Vision-Trigger/
-│   ├── uart_wait_trigger.py               # Serial triggering script
-│   └── hand_landmarker.task               # MediaPipe neural asset
 └── README.md
 ```
 ---
 
 ## Quickstart & Running the Labs
 
-All lab input images and datasets (`machine_failure_cleaned.csv`, `03-Panorama-Image-Stitching/inputs/`, `hand_landmarker.task`) are stored directly in this repository.
+All lab input images and datasets (`machine_failure_cleaned.csv`, `03-Panorama-Image-Stitching/inputs/`) are stored directly in this repository. The MediaPipe/UART vision trigger files belong to the Mechatronics Systems Design project and were moved to that repository.
 
 ### Installation
 ```bash
